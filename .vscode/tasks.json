@@ -1,0 +1,49 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "cmake",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                ".."
+            ],
+            "options": {
+                "cwd": "build"
+            },
+            "group": "build",
+            "dependsOn":["mkbuild"]
+        },
+        {
+            "label": "mkbuild",
+            "type": "shell",
+            "command": "mkdir",
+            "args": [
+                "-p",
+                "build"
+            ],
+            "windows":{
+                "args": [
+                    "-Force",
+                    "build"
+                ]
+            },
+            "group": "build"
+        },
+        {
+            "label": "compile",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--build",
+                "."
+            ],
+            "options": {
+                "cwd": "build"
+            },
+            "group": "build"
+        }
+    ]
+}
